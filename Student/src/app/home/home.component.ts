@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private studentService: StudentService) { }
 
-  signedIn = this.studentService.signedIn;
+  signedIn = this.studentService.getSignedIn();
 
   ngOnInit(): void {
   }

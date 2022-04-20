@@ -9,8 +9,9 @@ import { StudentService } from './student.service';
 })
 export class AppComponent {
   title = 'Student';
-  constructor(private router: Router,private studentService:StudentService) { }
+  
 
-  signedIn=this.studentService.signedIn;
+  
+
 
 }

@@ -1,14 +1,16 @@
 <nav class="flex-div">
-    <div class="nav-left flex-div">
-      <img
+    <div  class="nav-left flex-div">
+      <img *ngIf="signedIn"
         src="assets/images/menu.png"
         class="menu-icon"
         (click)="menuButtonClickEvent()"
       />
       <img src="assets/images/logo.png" class="logo" alt="" />
     </div>
+
+    <button></button>
   
-    <div class="nav-middle flex-div">
+    <div *ngIf="signedIn" class="nav-middle flex-div">
       <div class="search-box flex-div">
         <input type="text" placeholder="Search" />
         <img src="assets/images/search.png" alt="" />
@@ -20,7 +22,7 @@
   </nav>
   
   <!--sidebar-->
-  <div class="sidebar" [class.small-sidebar]="click == 0">
+  <div *ngIf="signedIn" class="sidebar" [class.small-sidebar]="click == 0">
     <div class="shortcut-links">
       <a href=""
         ><img src="assets/images/home.png" />

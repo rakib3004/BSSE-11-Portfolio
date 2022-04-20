@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LogInfo } from '../log-info';
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,8 +9,13 @@ import { LogInfo } from '../log-info';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
+  constructor(private studentService:StudentService) { }
   logInfo = new LogInfo();
+
+  signInButtonAction(){
+    console.log(this.logInfo);
+    this.studentService.loginValidation(this.logInfo);
+  }
   
   ngOnInit(): void {
   }

@@ -81,23 +81,6 @@ app.post('/login',(req,res)=>{
 });
 
 
-app.post('/login',(req,res)=>{
-    console.log(req.body);
-    let userName = req.body.userName;
-    let password = req.body.password;
-
-    let qr = `SELECT * FROM userInfo WHERE name = ? AND password = ?`;
-    db.query(qr, [ userName, password ],(err, result)=> {
-    if(err)
-    {
-        console.log(err,'errs');
-    }
-    res.send(result);
-
-    });
-});
-
-
 app.listen(3000,()=>{
     console.log('server running......')
 });
