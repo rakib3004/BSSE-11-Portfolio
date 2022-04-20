@@ -28,27 +28,34 @@ export class StudentService {
       });
   }
 
-  loginValidation(logInfo:LogInfo){
+  async loginValidation(logInfo:LogInfo){
     console.log(logInfo);
-    this._http.post('http://localhost:3000/login', logInfo).subscribe(data => {
-      if(JSON.stringify(data)=="[]") 
+    const data = await this._http.post('http://localhost:3000/login',logInfo).toPromise();
+    // await this._http.post('http://localhost:3000/login', logInfo).subscribe(data => {
+       if(JSON.stringify(data)=="[]") 
       {
         console.log("Invaid");
         alert('Incorrect password or user Name');
         logInfo.password='';
         logInfo.userName='';
         this.signedIn=false;
-        this.router.navigateByUrl('signin');
       }
       else 
       {
         alert('Login Successful');
         this.signedIn=true;
         console.log("valid");
-        this.router.navigateByUrl('');
       }
-    });
+    // });
 
+    if(this.signedIn)
+    {
+      this.router.navigateByUrl('studentList');
+    }
+    else
+    {
+      this.router.navigateByUrl('signin');
+    }
     console.log(this.signedIn);
   }
 

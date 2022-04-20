@@ -69,7 +69,7 @@ app.post('/login',(req,res)=>{
     let userName = req.body.userName;
     let password = req.body.password;
 
-    let qr = `SELECT * FROM userInfo WHERE name = ? AND password = ?`;
+    let qr = `SELECT * FROM Students WHERE name = ? AND password = ?`;
     db.query(qr, [ userName, password ],(err, result)=> {
     if(err)
     {

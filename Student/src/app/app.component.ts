@@ -9,9 +9,7 @@ import { StudentService } from './student.service';
 })
 export class AppComponent {
   title = 'Student';
-  
 
   
-
 
 }

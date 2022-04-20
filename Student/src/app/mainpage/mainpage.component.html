@@ -1,0 +1,12 @@
+
+<!-- <div *ngIf="!signedIn">
+    <button routerLink="signin">Sign In</button>
+    <button routerLink="signup">Sign Up</button>
+    <router-outlet *ngIf="!signedIn"></router-outlet>
+</div> -->
+<button *ngIf="!signedIn" routerLink="signin">Sign In</button>
+<button *ngIf="!signedIn" routerLink="signup">Sign Up</button>
+<app-navbar *ngIf="signedIn"></app-navbar>
+<div  class="container">
+  <router-outlet></router-outlet>
+</div>
