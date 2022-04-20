@@ -4,6 +4,7 @@ const cors = require('cors');
 const mysql = require('mysql2');
 const { send } = require('process');
 const { link } = require('fs');
+const { takeLast } = require('rxjs');
 
 const app = express();
 
@@ -12,7 +13,6 @@ app.use(bodyparser.json());
 
 
 //database connection
-
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -31,38 +31,52 @@ db.connect(err=>{
 //get all data
 app.post('/signup',(req,res)=>{
 
+    console.log(req.body);
     let name = req.body.name;
+    let email = req.body.email;
+    let qr = `SELECT * FROM Students WHERE name = ? OR email = ?`;
 
-    let qr = `SELECT * FROM Students WHERE name = ?`;
-
-    db.query(qr,name,(err,result)=>{
-
+    db.query(qr,[name,email],(err,result)=>{
         if(err)
         {
             console.log(err,'errs');
         }
-
         if(result.length>0)
         {
-            res.send(result);
+            res.send(false);
         }
         else
         {
-            let roll = req.body.roll;
             let name = req.body.name;
             let email = req.body.email;
             let password = req.body.password;
-            let image = req.body.image;
-            let facebook = req.body.facebook;
-            let github = req.body.github;
-            let linkedin = req.body.linkedin;
-            
-
-            let qr = "INSERT INTO Students (roll, name, email, password, image, facebook, github, linkedin) VALUES (?, ?, ?,?,?,?,?,?)";
-            db.query(qr,[roll, name,email,password,image,facebook,github,linkedin],(err,result)=>{
-
+            // let facebook = req.body.facebook;
+            // let github = req.body.github;
+            // let linkedin = req.body.linkedin;
+                    
+            let qr = "INSERT INTO Students (name, email, password) VALUES (?, ?, ?)";
+            db.query(qr,[name,email,password],(err,result)=>{
+                res.send(true);
             });
+             
         }
+    });
+});
+
+
+app.post('/login',(req,res)=>{
+    console.log(req.body);
+    let userName = req.body.userName;
+    let password = req.body.password;
+
+    let qr = `SELECT * FROM userInfo WHERE name = ? AND password = ?`;
+    db.query(qr, [ userName, password ],(err, result)=> {
+    if(err)
+    {
+        console.log(err,'errs');
+    }
+    res.send(result);
+
     });
 });
 

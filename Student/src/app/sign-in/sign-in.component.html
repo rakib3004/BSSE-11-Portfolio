@@ -20,7 +20,7 @@
               id="Username" 
               aria-describedby="emailHelp" 
               placeholder="User Name" 
-             
+              [(ngModel)] = "logInfo.userName" [ngModelOptions]="{standalone: true}"
               />
             </div>
             <div class="mb-3">
@@ -29,7 +29,7 @@
                 class="form-control"
                 id="password"
                 placeholder="password"
-            
+                [(ngModel)] = "logInfo.password" [ngModelOptions]="{standalone: true}"
               />
             </div>
   
@@ -38,10 +38,10 @@
                 Sign In
               </button>
             </div>
-            <div id="emailHelp" class="form-text text-center mb-5 text-dark">
+            <!-- <div id="emailHelp" class="form-text text-center mb-5 text-dark">
               Not Registered?
-              <a href="#" class="text-dark fw-bold"> Create an Account</a>
-            </div>
+              <a href="" class="text-dark fw-bold"> Create an Account</a>
+            </div> -->
           </form>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LogInfo } from '../log-info';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class SignInComponent implements OnInit {
 
   constructor() { }
-
+  logInfo = new LogInfo();
+  
   ngOnInit(): void {
   }
 
