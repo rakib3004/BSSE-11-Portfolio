@@ -1,43 +1,40 @@
-<div *ngIf="!signedIn.value"> 
-  <div class="card text-center">
-    <div class="card-header">
-      <h1>BSSE 11 Official Site</h1>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">11th Batch of Software Engineering Department</h5>
-      <h5 class="card-text">Institute of Information Technology, University of Dhaka</h5>
-      <br><br><br><br>
-      <div >
-        <h6>To Enter to the system: </h6>
-        <button routerLink="signin" class="btn btn-primary">Sign In</button>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; or &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <button routerLink="signup" class="btn btn-warning ">Sign Up</button>
-        <router-outlet></router-outlet>
-      </div>
-        </div>
-    <div class="card-footer text-muted">
-      <button routerLink="aboutUs" class="btn btn-info ">About Us</button>
-    </div>
-  </div>
+
+ 
 
 
 
 
-<app-navbar *ngIf="signedIn.value"></app-navbar>
+<!-- <app-navbar *ngIf="signedIn.value"></app-navbar>
 <div *ngIf="signedIn.value" class="container">
-  <router-outlet></router-outlet>
+  <router-outlet></router-outlet> -->
 
 
-  <!--
 
-    <div *ngIf="!signedIn.value">
-    <button routerLink="signin">Sign In</button>
-    <button routerLink="signup">Sign Up</button>
-    <router-outlet></router-outlet>
+ 
+<div *ngIf="!signedIn.value">
+    
+    <div class="card text-center">
+        <div class="card-header">
+          <h1>BSSE 11 Official Site</h1>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">11th Batch of Software Engineering Department</h5>
+          <h5 class="card-text">Institute of Information Technology, University of Dhaka</h5>
+          <br><br><br><br>
+          <div >
+            <h6>To Enter to the system: </h6>
+            <button (click)="signIn()" class="btn btn-primary">Sign In</button>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; or &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <button routerLink="signup" class="btn btn-warning ">Sign Up</button>
+            
+          </div>
+            </div>
+        <router-outlet *ngIf="!signedIn.value"></router-outlet>
+</div>
 </div>
 
 <app-navbar *ngIf="signedIn.value"></app-navbar>
 <div  *ngIf="signedIn.value" class="container">
   <router-outlet></router-outlet>
 </div>
-  -->
+ 
