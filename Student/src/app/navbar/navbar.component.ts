@@ -19,9 +19,9 @@ export class NavbarComponent implements OnInit {
     else this.click = 0;
   }
 
-  signin(){
-    console.log('Sign in clicked');
-    this.router.navigateByUrl('signin');
+  signOut(){
+    alert('Signed out Successful');
+    this.signedIn.value = false;
   }
 
   ngOnInit(): void {

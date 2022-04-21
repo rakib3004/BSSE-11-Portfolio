@@ -17,6 +17,10 @@ export class MainpageComponent implements OnInit {
 
   frontPageStatus:boolean=true;
 
+  signIn(){
+    this.router.navigateByUrl('signin');
+  }
+
   checkForntPage(){
     this.frontPageStatus=this.studentService.checkForntPage();
   }
