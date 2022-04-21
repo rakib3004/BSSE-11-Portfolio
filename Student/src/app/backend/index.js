@@ -75,7 +75,14 @@ app.post('/login',(req,res)=>{
     {
         console.log(err,'errs');
     }
-    res.send(result);
+    if(result.length>0)
+    {
+        res.send(true);
+    }
+    else
+    {
+        res.send(false);
+    }
 
     });
 });

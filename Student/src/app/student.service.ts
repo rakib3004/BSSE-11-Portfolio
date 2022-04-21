@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Bool } from './bool';
 import { LogInfo } from './log-info';
 import { Student } from './student';
 
@@ -11,7 +12,7 @@ export class StudentService {
 
   constructor(private _http:HttpClient,private router:Router) { }
 
-  signedIn = false;
+  signedIn = new Bool();
 
   saveData(studentInfo:Student){
       this._http.post('http://localhost:3000/signup',studentInfo).subscribe(data => {
@@ -31,38 +32,29 @@ export class StudentService {
   async loginValidation(logInfo:LogInfo){
     console.log(logInfo);
     const data = await this._http.post('http://localhost:3000/login',logInfo).toPromise();
-    // await this._http.post('http://localhost:3000/login', logInfo).subscribe(data => {
-       if(JSON.stringify(data)=="[]") 
+    console.log(typeof(data));
+    
+      if(!data) 
       {
         console.log("Invaid");
         alert('Incorrect password or user Name');
         logInfo.password='';
         logInfo.userName='';
-        this.signedIn=false;
+        this.signedIn.value=false;
+        
       }
-      else 
+      if(data) 
       {
         alert('Login Successful');
-        this.signedIn=true;
+        this.signedIn.value=true;
         console.log("valid");
+        this.router.navigateByUrl('');
       }
-    // });
 
-    if(this.signedIn)
-    {
-      this.router.navigateByUrl('studentList');
     }
-    else
-    {
-      this.router.navigateByUrl('signin');
+
+    getSignedIn(){
+      return this.signedIn;
     }
-    console.log(this.signedIn);
-  }
-
-  getSignedIn(){
-    return this.signedIn;
-  }
-
-
 
 }

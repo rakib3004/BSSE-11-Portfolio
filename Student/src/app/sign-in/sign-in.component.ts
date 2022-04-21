@@ -12,6 +12,7 @@ export class SignInComponent implements OnInit {
   constructor(private studentService:StudentService) { }
   logInfo = new LogInfo();
 
+
   signInButtonAction(){
     console.log(this.logInfo);
     this.studentService.loginValidation(this.logInfo);
