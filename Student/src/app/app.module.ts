@@ -11,6 +11,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {HttpClientModule} from '@angular/common/http';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     SignUpComponent,
     NavbarComponent,
     MainpageComponent,
+    AboutUsComponent,
     
   ],
   imports: [

@@ -57,4 +57,12 @@ export class StudentService {
       return this.signedIn;
     }
 
+    frontPageStatus:boolean=true;
+
+  checkForntPage(){
+    this.frontPageStatus=!this.frontPageStatus;
+    return this.frontPageStatus;
+  }
+  
+
 }

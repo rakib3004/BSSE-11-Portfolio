@@ -3,14 +3,13 @@ import { Router } from '@angular/router';
 import { StudentService } from '../student.service';
 
 @Component({
-  selector: 'app-mainpage',
-  templateUrl: './mainpage.component.html',
-  styleUrls: ['./mainpage.component.css']
+  selector: 'app-about-us',
+  templateUrl: './about-us.component.html',
+  styleUrls: ['./about-us.component.css']
 })
-export class MainpageComponent implements OnInit {
+export class AboutUsComponent implements OnInit {
 
   constructor (private studentService:StudentService, private router: Router){}
-  signedIn = this.studentService.getSignedIn();
 
   ngOnInit(): void {
   }
@@ -19,6 +18,8 @@ export class MainpageComponent implements OnInit {
 
   checkForntPage(){
     this.frontPageStatus=this.studentService.checkForntPage();
+    this.router.navigate(['mainpage'])
   }
   
+
 }
